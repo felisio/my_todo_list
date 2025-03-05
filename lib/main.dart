@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:my_todo_list/todo_screen.dart';
 
@@ -20,8 +21,19 @@ void main() async {
   await Hive.openBox<Todo>('todoListBox');
   await dotenv.load(fileName: ".env");
 
-  runApp(
-    MaterialApp(
+  bool kReleaseMode = true;
+
+  runApp(DevicePreview(enabled: !kReleaseMode, builder: (context) => MyApp()));
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       theme: ThemeData(
         colorScheme: kColorScheme,
         textTheme: const TextTheme(
@@ -33,6 +45,6 @@ void main() async {
         ),
       ),
       home: TodoScreen(),
-    ),
-  );
+    );
+  }
 }

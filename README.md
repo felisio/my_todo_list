@@ -13,5 +13,7 @@ OPENAI_API_KEY=YOUR_KEY
 
 ```
 
-- This APP was create with Flutter so you can find the structions [here](https://docs.flutter.dev/get-started/test-drive)
+- run the script: `flutter run` in your bash
+- If you have some emulator already opened the app will open on the emulator (android or IOS) otherwise you can choose to open as a MacOS application, the app **doesn't have support the open on Chrome yet**
+- If something goes wrng this APP was create with Flutter so you can find more structions [here](https://docs.flutter.dev/get-started/test-drive)
 - Emjpy the app and send some feedbacks 😎
