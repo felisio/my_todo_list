@@ -1,16 +1,17 @@
-# my_todo_list
+# My Todo List
 
-A new Flutter project.
+## A beautiful todo list to you enjoy 🌼
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To run the project follow the instructions
 
-A few resources to get you started if this is your first Flutter project:
+- rename the .env_example file to .env and set your open AI key this way:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```
+OPENAI_API_KEY=YOUR_KEY
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+
+- This APP was create with Flutter so you can find the structions [here](https://docs.flutter.dev/get-started/test-drive)
+- Emjpy the app and send some feedbacks 😎
