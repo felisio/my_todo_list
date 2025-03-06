@@ -1,5 +1,7 @@
 # ✅ My Todo List
 
+<img width="406" alt="Screenshot 2025-03-06 at 19 50 40" src="https://github.com/user-attachments/assets/378fc181-4678-4ddb-a053-59823772d7b8" />
+
 ## A beautiful to-do list to you enjoy 🌼
 
 ## Getting Started
