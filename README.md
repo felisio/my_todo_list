@@ -72,5 +72,7 @@ To solve my goals I divided my solution in few parts:
 
 - AI Model: Used OpenAI's GPT-3.5 for natural language processing (NLP).
 - Storage: Used [Hive](https://github.com/isar/hive)
-- Animation: Used [confetti](https://pub.dev/packages/confetti)
-- Dropdown: used [dropdown_search](https://pub.dev/packages/dropdown_search)
+- Generate ID: Used [uuid](https://pub.dev/packages/uuid)
+- Date Format: Used [intl](https://pub.dev/packages/intl)
+- Dropdown: Used [dropdown_search](https://pub.dev/packages/dropdown_search)
+- Fonts: Used [google fonts](https://pub.dev/packages/google_fonts/install)
