@@ -96,8 +96,7 @@ class _NewTodoAssistantState extends State<NewTodoAssistant> {
         _showErrorDialog();
       }
     } catch (error) {
-      // _showErrorDialog();
-      print('error Catch =====>: $error');
+      _showErrorDialog();
     } finally {
       setState(() {
         _isLoading = false;
@@ -168,7 +167,8 @@ class _NewTodoAssistantState extends State<NewTodoAssistant> {
                       10.0,
                     ), // Rounded corners
                   ),
-                  hintText: 'Describe how you want to create your todo...',
+                  hintText:
+                      'Describe your goal and let the AI create your tasks!',
                   label: Text('Assistant'),
                 ),
               ),

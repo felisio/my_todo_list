@@ -3,7 +3,6 @@ import 'package:my_todo_list/models/todo.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_todo_list/models/category.dart';
 import 'package:hive/hive.dart';
-import 'package:confetti/confetti.dart';
 
 class TodoItem extends StatefulWidget {
   const TodoItem({super.key, required this.todo, required this.index});
@@ -16,27 +15,21 @@ class TodoItem extends StatefulWidget {
 }
 
 class _TodoItemState extends State<TodoItem> {
-  late ConfettiController _confettiController;
   late Box<Todo> _todoBox;
 
   @override
   void initState() {
     super.initState();
     _todoBox = Hive.box<Todo>('todoListBox');
-    _confettiController = ConfettiController(duration: Duration(seconds: 1));
   }
 
   void _toggleTodo(bool value) async {
-    final int duration = value ? 500 : 0;
+    final int duration = value ? 400 : 0;
     Future.delayed(Duration(milliseconds: duration), () async {
       Todo todo = widget.todo;
       final updateTodo = todo.copyWith(isDone: value);
       await _todoBox.put(updateTodo.id, updateTodo);
     });
-
-    if (value) {
-      _confettiController.play();
-    }
   }
 
   @override
@@ -106,17 +99,6 @@ class _TodoItemState extends State<TodoItem> {
                 color: widget.todo.isDone ? Colors.green : Colors.grey,
               ),
               onPressed: () => _toggleTodo(!widget.todo.isDone),
-            ),
-
-            Align(
-              alignment: Alignment.topCenter,
-              child: ConfettiWidget(
-                confettiController: _confettiController,
-                blastDirectionality: BlastDirectionality.explosive,
-                emissionFrequency: 0.05,
-                numberOfParticles: 10,
-                gravity: 0.1,
-              ),
             ),
           ],
         ),
