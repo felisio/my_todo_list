@@ -31,4 +31,9 @@ class CategoryAdapter extends TypeAdapter<Category> {
   void write(BinaryWriter writer, Category obj) {
     writer.writeInt(obj.index);
   }
+
+  String get categoryNames {
+    List<String> categoryValues = Category.values.map((e) => e.name).toList();
+    return categoryValues.join(', ');
+  }
 }

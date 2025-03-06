@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:my_todo_list/models/todo.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -42,9 +43,21 @@ class _NewTodoAssistantState extends State<NewTodoAssistant> {
     );
   }
 
+  Todo _parseTodoList(String item) {
+    final itemSplited = item.split(':');
+    final categoryString =
+        itemSplited[0].replaceAll('-', '').trim().toLowerCase();
+
+    final category = Category.values.firstWhere(
+      (category) => category.name == categoryString,
+    );
+
+    return Todo.create(title: itemSplited[1].trim(), category: category);
+  }
+
   Future<void> _generateTodoList() async {
     final assistantText =
-        'Generate a to-do list based on the following description: ${_assistantController.text}. Return the list in bullet points with a maximum of 10 items.';
+        'Generate a to-do list based on the following description: ${_assistantController.text}. Return the list in bullet points with a maximum of 10 items. For each item, also specify the category it belongs to: ${CategoryAdapter().categoryNames}. return the list following the format: - category: item';
     setState(() {
       _isLoading = true;
     });
@@ -74,12 +87,7 @@ class _NewTodoAssistantState extends State<NewTodoAssistant> {
         final List<Todo> todoItems =
             lines
                 .where((line) => line.trim().isNotEmpty)
-                .map(
-                  (item) => Todo.create(
-                    title: item.replaceAll('-', '').trim(),
-                    category: Category.other,
-                  ),
-                )
+                .map((item) => _parseTodoList(item))
                 .toList();
 
         widget.onAddTodo(todoItems);
@@ -131,6 +139,26 @@ class _NewTodoAssistantState extends State<NewTodoAssistant> {
           padding: EdgeInsets.fromLTRB(16, 16, 16, 16 + keyboardSpace),
           child: Column(
             children: [
+              const SizedBox(height: 8),
+              Center(
+                child: Image.asset(
+                  'assets/icons/bot-16.png',
+                  width: 50,
+                  height: 50,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Center(
+                child: Text(
+                  'Add your magic todo list',
+                  style: GoogleFonts.chewy(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 136, 113, 198),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
               TextField(
                 controller: _assistantController,
                 maxLines: 10,
