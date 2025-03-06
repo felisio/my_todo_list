@@ -88,12 +88,30 @@ class _NewTodoState extends State<NewTodo> {
                     ),
                     borderRadius: BorderRadius.circular(5.0), // Rounded corners
                   ),
-                  label: Text('Item Name'),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(255, 74, 55, 128),
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.circular(5.0), // Rounded corners
+                  ),
+                  label: Text('Item description'),
                 ),
               ),
               const SizedBox(height: 16),
               DropdownSearch<String>(
                 items: (f, cs) => categories,
+                decoratorProps: DropDownDecoratorProps(
+                  decoration: InputDecoration(
+                    labelText: 'Select a Category',
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color.fromARGB(255, 74, 55, 128),
+                      ),
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
                 popupProps: PopupProps.menu(
                   fit: FlexFit.loose,
                   showSelectedItems: true,
