@@ -39,12 +39,6 @@ class _TodoItemState extends State<TodoItem> {
     }
   }
 
-  /* @override
-  void dispose() {
-    _confettiController.dispose();
-    super.dispose();
-  } */
-
   @override
   Widget build(BuildContext context) {
     return Card(
